@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ejercicio03</string>
+    <string name="Title">Cara o Cruz</string>
+    <string name="Subtitle">Haz tu apuesta</string>
+    <string name="buttonText1">Cara</string>
+    <string name="buttonText2">Cruz</string>
+    <string name="winText">felicidades, has ganado!</string>
+    <string name="loseText">has perdido</string>
+</resources>

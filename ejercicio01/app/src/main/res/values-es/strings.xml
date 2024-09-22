@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ejercicio01</string>
+    <string name="greeting">Saludo</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="greet">Saluda</string>
+    <string name="greetNotif">Hola</string>
+</resources>

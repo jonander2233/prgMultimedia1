@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ejercicio03</string>
+    <string name="Title">Heads or Tails</string>
+    <string name="Subtitle">place your bet</string>
+    <string name="buttonText1">Head</string>
+    <string name="buttonText2">Tail</string>
+    <string name="winText">congratulations, you won!</string>
+    <string name="loseText">you lose</string>
+</resources>

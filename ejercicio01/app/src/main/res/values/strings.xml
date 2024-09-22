@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ejercicio01</string>
+    <string name="greeting">Greeting</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last name</string>
+    <string name="greet">Greet</string>
+    <string name="greetNotif">Hello</string>
+</resources>
