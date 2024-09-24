@@ -29,7 +29,9 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(v.getId() == R.id.buttonHead){
                     mostrarResultado(true);
+                    //cara será true
                 } else if (v.getId() == R.id.buttonTail) {
+                    //cruz será false
                     mostrarResultado(false);
                 }
             }
@@ -42,14 +44,23 @@ public class MainActivity extends AppCompatActivity {
         TextView result = findViewById(R.id.tvResult);
         ImageView imagen = findViewById(R.id.imageView);
 
+        //resultado será true o false, si es true el resultado será cara, si es false será cruz
+
 
         if(resultado){
             imagen.setImageResource(R.drawable.euro_cara);
+            imagen.setScaleX(1);
+            imagen.setScaleY(1);
+
+//            result.setText("cara");
+
         }else {
             imagen.setImageResource(R.drawable.euro_cruz);
+            imagen.setScaleX(1);
+            imagen.setScaleY(1);
+//            result.setText("cruz");
+
         }
-
-
         if (resultado == eleccion){
             result.setText(R.string.winText);
         }else{
