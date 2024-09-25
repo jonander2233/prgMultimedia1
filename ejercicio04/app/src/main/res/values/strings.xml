@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">ejercicio04</string>
     <string name="title">Rock Paper Scissors</string>
+    <string name="rock">rock</string>
+    <string name="paper">Paper</string>
+    <string name="scissors">Scissors</string>
+    <string name="play">Play</string>
+    <string name="reset">Reset</string>
+    <string name="resultWin">You win!</string>
+    <string name="resultLose">You Lose!</string>
+    <string name="resultDraw">Draw!</string>
 </resources>

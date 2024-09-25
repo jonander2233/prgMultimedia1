@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
         botonHead.setOnClickListener(listener);
         botonTail.setOnClickListener(listener);
     }
+
+
+
     void mostrarResultado(boolean eleccion){
         boolean resultado = Engranajes.caraOCruz();
         TextView result = findViewById(R.id.tvResult);

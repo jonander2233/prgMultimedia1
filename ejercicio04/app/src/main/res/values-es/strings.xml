@@ -2,4 +2,12 @@
 <resources>
     <string name="app_name">ejercicio04</string>
     <string name="title">Pierda Papel o Tijeras</string>
+    <string name="rock">Piedra</string>
+    <string name="paper">Papel</string>
+    <string name="scissors">Tijeras</string>
+    <string name="play">Jugar</string>
+    <string name="reset">Reiniciar</string>
+    <string name="resultWin">Has ganado!</string>
+    <string name="resultLose">Has perdido!</string>
+    <string name="resultDraw">Empate!</string>
 </resources>

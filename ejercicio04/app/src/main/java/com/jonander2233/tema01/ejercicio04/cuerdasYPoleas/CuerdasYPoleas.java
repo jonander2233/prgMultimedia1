@@ -2,8 +2,8 @@ package com.jonander2233.tema01.ejercicio04.cuerdasYPoleas;
 
 import java.util.Random;
 
-public class cuerdasYPoleas {
-    public EstadosJuego jugarVsCpu(ElementosJuego jugada){
+public class CuerdasYPoleas {
+    public static Partida jugarVsCpu(ElementosJuego jugada){
         Random random = new Random();
         int cpu = random.nextInt(3);
         ElementosJuego cpuJugada = null;
@@ -20,23 +20,23 @@ public class cuerdasYPoleas {
         }
 
         if(cpuJugada == ElementosJuego.PIEDRA && jugada == ElementosJuego.TIJERA){
-            return EstadosJuego.PERDER;
+            return new Partida(jugada, cpuJugada, EstadosJuego.PERDER);
         } else if (cpuJugada == ElementosJuego.PAPEL && jugada == ElementosJuego.TIJERA){
-            return EstadosJuego.GANAR;
+            return new Partida(jugada, cpuJugada, EstadosJuego.GANAR);
         } else if (cpuJugada == ElementosJuego.TIJERA && jugada == ElementosJuego.TIJERA) {
-            return EstadosJuego.EMPATAR;
+            return new Partida(jugada, cpuJugada, EstadosJuego.EMPATAR);
         } else if (cpuJugada == ElementosJuego.PIEDRA && jugada == ElementosJuego.PAPEL){
-            return EstadosJuego.GANAR;
+            return new Partida(jugada, cpuJugada, EstadosJuego.GANAR);
         } else if (cpuJugada == ElementosJuego.PAPEL && jugada == ElementosJuego.PAPEL){
-            return EstadosJuego.EMPATAR;
+            return new Partida(jugada, cpuJugada, EstadosJuego.EMPATAR);
         } else if (cpuJugada == ElementosJuego.TIJERA && jugada == ElementosJuego.PAPEL) {
-            return EstadosJuego.PERDER;
+            return new Partida(jugada, cpuJugada, EstadosJuego.PERDER);
         } else if (cpuJugada == ElementosJuego.PIEDRA && jugada == ElementosJuego.PIEDRA){
-            return EstadosJuego.EMPATAR;
+            return new Partida(jugada, cpuJugada, EstadosJuego.EMPATAR);
         } else if (cpuJugada == ElementosJuego.PAPEL && jugada == ElementosJuego.PIEDRA){
-            return EstadosJuego.PERDER;
+            return new Partida(jugada, cpuJugada, EstadosJuego.PERDER);
         } else if (cpuJugada == ElementosJuego.TIJERA && jugada == ElementosJuego.PIEDRA) {
-            return EstadosJuego.GANAR;
+            return new Partida(jugada, cpuJugada, EstadosJuego.GANAR);
         }
         return null;
     }
