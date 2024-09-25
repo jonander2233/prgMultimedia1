@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                             default:
                                 break;
                         }
+                        cambiarFuncionalidadbotonJugaraReset();
                     } else {
                         Toast.makeText(MainActivity.this, "Primero selecciona una opción", Toast.LENGTH_SHORT).show();
                     }
@@ -94,13 +95,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
     }
-    private void cambiarFuncionalidadbotonJugar(){
-        bJugar.setText(R.string.reset);
-        bJugar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    private void cambiarFuncionalidadbotonJugaraReset(){
 
-            }
-        });
     }
 }
