@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">ejercicio04</string>
-    <string name="title">Pierda Papel o Tijeras</string>
+    <string name="title">Piedra Papel o Tijeras</string>
     <string name="rock">Piedra</string>
     <string name="paper">Papel</string>
     <string name="scissors">Tijeras</string>

@@ -56,10 +56,13 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="47dp"
         android:layout_marginTop="32dp"
+        android:layout_marginEnd="42dp"
         android:text="@string/paper"
-        app:layout_constraintTop_toBottomOf="@+id/ivJugador"
-        tools:layout_editor_absoluteX="159dp" />
+        app:layout_constraintEnd_toStartOf="@+id/bTijeras"
+        app:layout_constraintStart_toEndOf="@+id/bPiedra"
+        app:layout_constraintTop_toBottomOf="@+id/ivJugador" />
 
     <Button
         android:id="@+id/bPiedra"
