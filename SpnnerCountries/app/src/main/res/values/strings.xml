@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SpìnnerCountries</string>
+    <string name="selectedCountry">You have selected :</string>
+</resources>
