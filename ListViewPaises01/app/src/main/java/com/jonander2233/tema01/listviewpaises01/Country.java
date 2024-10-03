@@ -1,17 +1,31 @@
 package com.jonander2233.tema01.listviewpaises01;
 
 public class Country {
-    String countryCode;
-    String countryName;
-    int population;
-    String capital;
-    String isoAlpha3;
+    private final String countryName;
+    private final int population;
+    private final String capital;
+    private final String countryCode;
 
-    public Country(String countryCode, String countryName, int population, String capital, String isoAlpha3) {
-        this.countryCode = countryCode;
+    public Country(String countryCode, String countryName, int population, String capital) {
         this.countryName = countryName;
         this.population = population;
         this.capital = capital;
-        this.isoAlpha3 = isoAlpha3;
+        this.countryCode = countryCode;
+    }
+
+    public String getCountryName() {
+        return countryName;
+    }
+
+    public String getIsoAlpha3() {
+        return countryCode;
+    }
+
+    public String getCapital() {
+        return capital;
+    }
+
+    public int getPopulation() {
+        return population;
     }
 }

@@ -11,16 +11,29 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import org.xml.sax.SAXException;
+
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
 public class MainActivity extends AppCompatActivity {
+    private Country[] countries;
     private ListView listaPaises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.countries,android.R.layout.simple_list_item_1);
-        listaPaises = (ListView)findViewById(R.id.listaPaises);
 
+        try {
+            countries = CountryParser.parse(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        CountryAdapter ca = new CountryAdapter(this, countries);
 
     }
+
+
 }

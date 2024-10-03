@@ -8,15 +8,19 @@ import android.widget.ArrayAdapter;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class CountryAdapter extends ArrayAdapter<Country> {
-    public CountryAdapter(@NonNull Context context, int resource) {
-        super(context, resource);
+public class CountryAdapter extends ArrayAdapter<Country>{
+
+    private final Country[] countries;
+
+    public CountryAdapter(@NonNull Context context, Country[] countries) {
+        super(context, R.layout.listitem_country, countries);
+        this.countries = countries;
+
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         return super.getView(position, convertView, parent);
-        
     }
 }
