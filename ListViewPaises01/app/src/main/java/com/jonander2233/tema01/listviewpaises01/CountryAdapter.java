@@ -22,5 +22,6 @@ public class CountryAdapter extends ArrayAdapter<Country>{
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         return super.getView(position, convertView, parent);
+        
     }
 }
