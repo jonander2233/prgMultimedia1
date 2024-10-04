@@ -1,9 +1,14 @@
 package com.jonander2233.tema01.listviewpaises01;
 
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,9 +26,24 @@ public class CountryAdapter extends ArrayAdapter<Country>{
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        return super.getView(position, convertView, parent);
-        //no sé que hacer aquí
+        LayoutInflater inflater = LayoutInflater.from(getContext());
+        View item = inflater.inflate(R.layout.listitem_country, null);
+        TextView tvCountryName = item.findViewById(R.id.tvCountryName);
+        TextView tvCapital = item.findViewById(R.id.tvCapital);
+        TextView tvPopulation = item.findViewById(R.id.tvPopulation);
+        ImageView ivFlag = item.findViewById(R.id.ivFlag);
 
+        Country country = countriesArrayList.get(position);
+        tvCountryName.setText(country.getCountryName());
+        tvCapital.setText(country.getCapital());
+        tvPopulation.setText(String.valueOf(country.getPopulation()));
 
+        Resources res = getContext().getResources();
+        String flagName = "_" + country.getCountryCode().toLowerCase();
+        int resourceId = res.getIdentifier(flagName, "drawable", getContext().getPackageName());
+        Drawable flag =  res.getDrawable(resourceId,null);
+        ivFlag.setImageDrawable(flag);
+
+        return item;
     }
 }

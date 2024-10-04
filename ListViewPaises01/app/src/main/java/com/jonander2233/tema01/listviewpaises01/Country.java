@@ -28,4 +28,8 @@ public class Country {
     public int getPopulation() {
         return population;
     }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
 }
