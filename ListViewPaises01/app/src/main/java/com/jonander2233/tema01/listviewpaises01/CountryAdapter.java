@@ -41,8 +41,9 @@ public class CountryAdapter extends ArrayAdapter<Country>{
         Resources res = getContext().getResources();
         String flagName = "_" + country.getCountryCode().toLowerCase();
         int resourceId = res.getIdentifier(flagName, "drawable", getContext().getPackageName());
-        Drawable flag =  res.getDrawable(resourceId,null);
-        ivFlag.setImageDrawable(flag);
+        if (resourceId != 0) {
+            ivFlag.setImageResource(resourceId);
+        }
 
         return item;
     }
