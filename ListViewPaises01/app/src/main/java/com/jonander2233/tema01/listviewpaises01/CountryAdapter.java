@@ -20,7 +20,7 @@ public class CountryAdapter extends ArrayAdapter<Country>{
 
     public CountryAdapter(@NonNull Context context, ArrayList<Country> countriesArray) {
         super(context, R.layout.listitem_country, countriesArray);
-        this.countriesArrayList = countriesArrayList;
+        this.countriesArrayList = countriesArray;
     }
 
     @NonNull

@@ -20,7 +20,7 @@ import javax.xml.parsers.ParserConfigurationException;
 public class CountryParser {
 
     public static ArrayList<Country> parseToArrayList(Context context) throws ParserConfigurationException, IOException, SAXException {
-        ArrayList<Country> countries = null;
+        ArrayList<Country> countries = new ArrayList<>();
         InputStream inputStream = context.getResources().openRawResource(R.raw.countries);
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
@@ -45,7 +45,7 @@ public class CountryParser {
         return countries;
     }
     public static Country[] parseToArray(Context context) throws ParserConfigurationException, IOException, SAXException {
-        Country[] countries = null;
+        Country[] countries = new Country[0];
         // Crea una lista para almacenar los objetos Country
         List<Country> countryList = new ArrayList<>();
 
