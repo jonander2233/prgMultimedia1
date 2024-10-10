@@ -45,7 +45,7 @@ public class CountryParser {
         return countries;
     }
     public static Country[] parseToArray(Context context) throws ParserConfigurationException, IOException, SAXException {
-        Country[] countries = null;
+        Country[] countries = new Country[0];
         // Crea una lista para almacenar los objetos Country
         List<Country> countryList = new ArrayList<>();
 
