@@ -27,6 +27,7 @@ public class CountryAdapter extends ArrayAdapter<Country>{
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = LayoutInflater.from(getContext());
         View item = inflater.inflate(R.layout.listitem_country, null);
+
         TextView tvCountryName = item.findViewById(R.id.tvCountryName);
         TextView tvCapital = item.findViewById(R.id.tvCapital);
         TextView tvPopulation = item.findViewById(R.id.tvPopulation);
