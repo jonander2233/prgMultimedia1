@@ -16,11 +16,11 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class CountryAdapter extends ArrayAdapter<Country>{
-    private ArrayList<Country> countriesArrayList = null;
+    private ArrayList<Country> countriesArrayList;
 
     public CountryAdapter(@NonNull Context context, ArrayList<Country> countriesArray) {
         super(context, R.layout.listitem_country, countriesArray);
-        this.countriesArrayList = countriesArrayList;
+        this.countriesArrayList = countriesArray;
     }
 
     @NonNull

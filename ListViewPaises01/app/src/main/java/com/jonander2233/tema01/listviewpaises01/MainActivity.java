@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        countries = new ArrayList<>();
         ListView listaPaises = findViewById(R.id.lvCountries);
         try {
             countries = CountryParser.parseToArrayList(this);
