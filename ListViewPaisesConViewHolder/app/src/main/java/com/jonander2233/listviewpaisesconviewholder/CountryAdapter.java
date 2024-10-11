@@ -25,22 +25,36 @@ public class CountryAdapter extends ArrayAdapter<Country>{
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        View layout = convertView;
+        View layoutView = convertView;
         ViewHolder viewHolder;
-        if (layout == null) {
+        //Si convertView es null, significa que no hay una vista previamente creada para reutilizar, por lo que debe inflarse (crear) una nueva desde el layout XML.
+        if (layoutView == null) {
+            //se crea un inflater para crear una vista
             LayoutInflater inflater = LayoutInflater.from(getContext());
-            layout = inflater.inflate(R.layout.listitem_country, null);
+            layoutView = inflater.inflate(R.layout.listitem_country, null);
+            //creo un viewHolder y asocio los atributos al viewHolder
             viewHolder = new ViewHolder();
-            viewHolder.ivFlag = layout.findViewById(R.id.ivFlag);
-            viewHolder.tvCountryName = layout.findViewById(R.id.tvCountryName);
-            viewHolder.tvCountryCapital = layout.findViewById(R.id.tvCapital);
-            viewHolder.tvCountryPopulation = layout.findViewById(R.id.tvPopulation);
-            layout.setTag(viewHolder);
+            viewHolder.ivFlag = layoutView.findViewById(R.id.ivFlag);
+            viewHolder.tvCountryName = layoutView.findViewById(R.id.tvCountryName);
+            viewHolder.tvCountryCapital = layoutView.findViewById(R.id.tvCapital);
+            viewHolder.tvCountryPopulation = layoutView.findViewById(R.id.tvPopulation);
+            //layoutView es un elemento View, el setTag sirve para que el viewHolder se asocie al layoutView como su etiqueta
+            layoutView.setTag(viewHolder);
         } else {
-            viewHolder = (ViewHolder) layout.getTag();
+            viewHolder = (ViewHolder) layoutView.getTag();
         }
         Country country = countriesArrayList.get(position);
         try {
+            Resources res = getContext().getResources();
+            String flagName = "_" + country.getCountryCode().toLowerCase();
+            int resID = res.getIdentifier(flagName, "drawable", getContext().getPackageName());
+            if (resID != 0) {
+                viewHolder.ivFlag.setImageResource(resID);
+            }else {
+                resID = res.getIdentifier(flagName, "drawable", getContext().getPackageName());
+                viewHolder.ivFlag.setImageResource(resID);
+            }
+        } catch (Exception e){
 
         }
 
@@ -57,9 +71,9 @@ public class CountryAdapter extends ArrayAdapter<Country>{
 
         Resources res = getContext().getResources();
         String flagName = "_" + country.getCountryCode().toLowerCase();
-        int resourceId = res.getIdentifier(flagName, "drawable", getContext().getPackageName());
-        if (resourceId != 0) {
-            ivFlag.setImageResource(resourceId);
+        int resID = res.getIdentifier(flagName, "drawable", getContext().getPackageName());
+        if (resID != 0) {
+            ivFlag.setImageResource(resID);
         }
 
         return item;
