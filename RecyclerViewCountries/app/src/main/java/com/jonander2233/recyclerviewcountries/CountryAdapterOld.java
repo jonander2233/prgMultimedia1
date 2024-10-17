@@ -1,4 +1,4 @@
-package com.jonander2233.listviewpaisesconviewholder;
+package com.jonander2233.recyclerviewcountries;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -14,10 +14,10 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class CountryAdapter extends ArrayAdapter<Country>{
+public class CountryAdapterOld extends ArrayAdapter<Country>{
     private ArrayList<Country> countriesArrayList;
 
-    public CountryAdapter(@NonNull Context context, ArrayList<Country> countriesArray) {
+    public CountryAdapterOld(@NonNull Context context, ArrayList<Country> countriesArray) {
         super(context, R.layout.listitem_country, countriesArray);
         this.countriesArrayList = countriesArray;
     }
