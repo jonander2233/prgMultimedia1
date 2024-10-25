@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.misscott.chatarra"
+    namespace = "com.jonander2233.chatarra"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.misscott.chatarra"
+        applicationId = "com.jonander2233.chatarra"
         minSdk = 30
         targetSdk = 34
         versionCode = 1
