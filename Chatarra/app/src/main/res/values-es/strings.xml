@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Chatarra</string>
+    <string name="nombre">Nombre: %1$s</string>
+    <string name="apellidos">Apellidos: %1$s</string>
+    <string name="direccion">Dirección: %1$s</string>
+    <string name="telefono1">Teléfono 1: %1$s</string>
+    <string name="telefono2">Teléfono 2: %1$s</string>
+    <string name="email">Email: %1$s</string>
+    <string name="company">Compañia: %1$s</string>
+    <string name="data">Contact data</string>
+</resources>

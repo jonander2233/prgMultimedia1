@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Chatarra</string>
+    <string name="nombre">Name: %1$s</string>
+    <string name="apellidos">Surname: %1$s</string>
+    <string name="direccion">Address: %1$s</string>
+    <string name="telefono1">Phone 1: %1$s</string>
+    <string name="telefono2">Phone 2: %1$s</string>
+    <string name="email">Email: %1$s</string>
+    <string name="company">Company: %1$s</string>
+    <string name="data">Contact data</string>
+</resources>
