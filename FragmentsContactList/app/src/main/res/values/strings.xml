@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">Fragments</string>
-    <string name="title_activity_detalle">DetalleActivity</string>
-    <string name="detail">Detail</string>
-    <string name="email">email</string>
-    <string name="subject">Subject</string>
-</resources>
