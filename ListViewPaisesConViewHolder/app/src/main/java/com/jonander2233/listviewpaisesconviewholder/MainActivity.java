@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private static ArrayList<Country> countries;
-
     private static ListView listaPaises;
 
     @Override
@@ -29,6 +28,5 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
-//        CountryAdapter ca = new CountryAdapter(this, countries);
     }
 }
