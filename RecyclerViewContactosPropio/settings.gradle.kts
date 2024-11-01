@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "ListViewContactosConRecyclerViewPropio"
+rootProject.name = "RecyclerViewContactosPropio"
 include(":app")
  

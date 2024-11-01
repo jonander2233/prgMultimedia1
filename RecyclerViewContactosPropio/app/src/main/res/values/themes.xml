@@ -5,5 +5,5 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.ListViewContactosConRecyclerViewPropio" parent="Base.Theme.ListViewContactosConRecyclerViewPropio" />
+    <style name="Theme.RecyclerViewContactosPropio" parent="Base.Theme.ListViewContactosConRecyclerViewPropio" />
 </resources>
