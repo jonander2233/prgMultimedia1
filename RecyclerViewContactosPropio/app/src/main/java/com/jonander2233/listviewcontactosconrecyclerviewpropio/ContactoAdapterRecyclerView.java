@@ -10,10 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
-
+//para hacer un adaptador de recyclerView, extiendo Adapter de la clase Recyclerview y como parametro <> se usará viewholder de la clase contactoAdapterRecyclerView
 public class ContactoAdapterRecyclerView extends RecyclerView.Adapter<ContactoAdapterRecyclerView.ContactoViewHolder> {
-    private List<Contacto> contactos;
-
+    private final List<Contacto> contactos;
+    //constructor que recibe una lista de contactos
     public ContactoAdapterRecyclerView(List<Contacto> contactos) {
         this.contactos = contactos;
     }
@@ -21,17 +21,20 @@ public class ContactoAdapterRecyclerView extends RecyclerView.Adapter<ContactoAd
 
     @NonNull
     @Override
+    //se ejecuta cada vez que crea una vista nueva, es decir cuando carga las primeras vistas
     public ContactoViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemLayout = LayoutInflater.from(parent.getContext()).inflate(R.layout.elemento_lista, null);
-        return new ContactoViewHolder(itemLayout);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.elemento_lista, null);
+        return new ContactoViewHolder(itemView);
     }
 
     @Override
+    //se encarga de bindear los datos con las vistas recicladas
     public void onBindViewHolder(@NonNull ContactoViewHolder holder, int position) {
         holder.bindContacto(contactos.get(position));
     }
 
     @Override
+    //devuelve la cantidad de elementos de la lista
     public int getItemCount() {
         return contactos.size();
     }
