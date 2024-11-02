@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         loadData();
         setupRecyclerView();
 
+
     }
 
     private void loadData() {
