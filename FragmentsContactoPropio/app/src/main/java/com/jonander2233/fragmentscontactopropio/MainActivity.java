@@ -1,4 +1,4 @@
-package com.jonander2233.listviewcontactosconrecyclerviewpropio;
+package com.jonander2233.fragmentscontactopropio;
 
 import android.os.Bundle;
 import android.widget.ListView;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
         loadData();
         setupRecyclerView();
 
+
     }
 
     private void loadData() {
@@ -30,18 +31,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void setupListView(){
-        setContentView(R.layout.lista_contactos);
-        mListView = findViewById(R.id.lvContactos);
-        ListAdapter mAdapter = new ListAdapter(this,R.layout.lista_contactos,contactos);
-        mListView.setAdapter(mAdapter);
-    }
 
     private void setupRecyclerView(){
         setContentView(R.layout.recycler_contactos);
         RecyclerView recyclerView = findViewById(R.id.rvContactos);
-//        ContactoAdapterRecyclerView adapter = new ContactoAdapterRecyclerView(contactos);
-        Adapter1 adapter = new Adapter1(contactos);
+        AdapterContactos adapter = new AdapterContactos(contactos);
         recyclerView.setAdapter(adapter);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
