@@ -6,10 +6,10 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:paddingVertical="5dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="5dp">
 
         <ImageView
             android:id="@+id/ivFotoContacto"
@@ -107,10 +107,10 @@
         android:text="Datos de contacto" />
 
     <LinearLayout
-        android:paddingVertical="3dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingVertical="3dp">
 
         <TextView
 
@@ -126,10 +126,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:paddingVertical="3dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingVertical="3dp">
 
         <TextView
 
@@ -145,10 +145,10 @@
     </LinearLayout>
 
     <LinearLayout
-        android:paddingVertical="3dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingVertical="3dp">
 
         <TextView
 

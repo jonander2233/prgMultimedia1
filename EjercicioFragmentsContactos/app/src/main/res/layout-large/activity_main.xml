@@ -2,14 +2,24 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity" >
+    android:baselineAligned="false">
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvListFragment"
         android:name="com.jonander2233.ejerciciofragmentscontactos.fragments.ListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"
+        android:layout_weight="35"
         tools:layout="@layout/fragment_list_contactos" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fcvDetailFragment"
+        android:name="com.jonander2233.ejerciciofragmentscontactos.fragments.DetailFragment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="65"
+        tools:layout="@layout/detail_contacto" />
 </LinearLayout>
