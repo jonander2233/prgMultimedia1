@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:layout_width="match_parent"
     android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -13,14 +13,14 @@
         android:name="com.jonander2233.ejerciciofragmentscontactos.fragments.ListFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        tools:layout="@layout/fragment_list_contactos"
-        android:layout_weight="45" />
+        android:layout_weight="45"
+        tools:layout="@layout/fragment_list_contactos" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fcvDetailFragment"
         android:name="com.jonander2233.ejerciciofragmentscontactos.fragments.DetailFragment"
         android:layout_width="0dp"
-        tools:layout="@layout/detail_contacto"
-        android:layout_height="wrap_content"
-        android:layout_weight="45" />
+        android:layout_height="match_parent"
+        android:layout_weight="55"
+        tools:layout="@layout/detail_contacto" />
 </LinearLayout>
