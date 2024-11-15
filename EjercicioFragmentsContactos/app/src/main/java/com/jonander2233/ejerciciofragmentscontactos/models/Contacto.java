@@ -1,12 +1,15 @@
 package com.jonander2233.ejerciciofragmentscontactos.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Contacto {
-    private static SimpleDateFormat sdf;
-    private static final String format = "yyyy-MM-dd" ;
+public class Contacto implements Parcelable {
     private int id;
     private String name;
     private String firstSurname;
@@ -20,6 +23,31 @@ public class Contacto {
     private String address;
 
 
+    protected Contacto(Parcel in) {
+        id = in.readInt();
+        name = in.readString();
+        firstSurname = in.readString();
+        secondSurname = in.readString();
+        photo = in.readString();
+        birth = in.readString();
+        company = in.readString();
+        email = in.readString();
+        phone1 = in.readString();
+        phone2 = in.readString();
+        address = in.readString();
+    }
+
+    public static final Creator<Contacto> CREATOR = new Creator<Contacto>() {
+        @Override
+        public Contacto createFromParcel(Parcel in) {
+            return new Contacto(in);
+        }
+
+        @Override
+        public Contacto[] newArray(int size) {
+            return new Contacto[size];
+        }
+    };
 
     public int getId() {
         return id;
@@ -71,7 +99,6 @@ public class Contacto {
         this.firstSurname = firstSurname;
         this.secondSurname = secondSurname;
         this.photo = photo;
-//        this.birth = parseDate(birth);
         this.birth = birth;
         this.company = company;
         this.email = email;
@@ -80,10 +107,24 @@ public class Contacto {
         this.address = address;
 
     }
-    private static Date parseDate(String dateString) throws ParseException {
-        if(sdf == null){
-            sdf = new SimpleDateFormat(format);
-        }
-        return sdf.parse(dateString);
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+        parcel.writeInt(id);
+        parcel.writeString(name);
+        parcel.writeString(firstSurname);
+        parcel.writeString(secondSurname);
+        parcel.writeString(photo);
+        parcel.writeString(birth);
+        parcel.writeString(company);
+        parcel.writeString(email);
+        parcel.writeString(phone1);
+        parcel.writeString(phone2);
+        parcel.writeString(address);
     }
 }

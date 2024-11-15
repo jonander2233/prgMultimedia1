@@ -32,9 +32,10 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        JSONContactos jc = JSONContactos.getInstance(this);
-        contactos = jc.transformToObject(R.raw.contacts);
-
+        if(savedInstanceState != null){
+            JSONContactos jc = JSONContactos.getInstance(this);
+            contactos = jc.transformToObject(R.raw.contacts);
+        }
     }
 
     @Override
