@@ -2,20 +2,15 @@ package com.jonander2233.ejerciciofragmentscontactos;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.jonander2233.ejerciciofragmentscontactos.fragments.DetailFragment;
 import com.jonander2233.ejerciciofragmentscontactos.fragments.ListFragment;
 import com.jonander2233.ejerciciofragmentscontactos.models.Contacto;
-import com.jonander2233.ejerciciofragmentscontactos.transformers.JSONContactos;
+import com.jonander2233.ejerciciofragmentscontactos.transformers.ContactParser;
 import com.jonander2233.ejerciciofragmentscontactos.utils.IOnClickListener;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,8 +28,12 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         if(savedInstanceState != null){
-            JSONContactos jc = JSONContactos.getInstance(this);
-            contactos = jc.transformToObject(R.raw.contacts);
+            ContactParser jc = new ContactParser(this);
+            jc.parse();
+            contactos = jc.getContactos();
+        }
+        if(savedInstanceState != null){
+            contactos = (List<Contacto>) savedInstanceState.getParcelableArray(CONTACTS_KEY);
         }
     }
 
