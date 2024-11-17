@@ -1,7 +1,9 @@
 package com.jonander2233.ejerciciofragmentscontactos;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -43,12 +45,17 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
             jc.parse();
             contactos = jc.getContactos();
         }
-        if(savedInstanceState != null){
-            contactos = savedInstanceState.getParcelableArrayList(CONTACTS_KEY);
+        contactos = savedInstanceState.getParcelableArrayList(CONTACTS_KEY);
 
-        }
+
 
     }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
 
     @Override
     public Contacto getContacto() {
