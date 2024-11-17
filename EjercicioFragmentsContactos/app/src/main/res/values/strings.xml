@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">EjercicioFragmentsContactos</string>
+    <string name="app_name">ContactsFragment</string>
+    <string name="title_activity_detalle">DetailActivity</string>
+    <string name="contacts">Contacts</string>
 </resources>

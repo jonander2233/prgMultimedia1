@@ -16,18 +16,28 @@ import java.util.Collections;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements ListFragment.IOnAttachListener, IOnClickListener, DetailFragment.IOnAttachListener {
-    private static final String CONTACTS_KEY = "com.jonander2233.ejerciciofragmentscontactos.contacts";
-    private static final String SELECTED_CONTACT_KEY = "com.jonander2233.ejerciciofragmentscontactos.selectedcontact";
-    private DetailFragment detailFragment;
+    private static final String CONTACTS_KEY = "contacts key for saved instance";
+    private static final String SELECTED_CONTACT_KEY = "contact key for saved instance";
     private boolean hasDetail;
     private List<Contacto> contactos;
     private Contacto contactoSeleccionado;
+    private DetailFragment detailFragment;
     private FragmentManager fragmentManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle(R.string.contacts);
+        fragmentManager = getSupportFragmentManager();
+
+        if(findViewById(R.id.fcvDetailFragment) != null){
+            detailFragment = (DetailFragment) fragmentManager.findFragmentById(R.id.fcvDetailFragment);
+            if (!(fragmentManager.findFragmentById(R.id.fcvListFragment) instanceof ListFragment)) {
+                fragmentManager.popBackStack();
+            }
+        }
+
         if(savedInstanceState != null){
             ContactParser jc = new ContactParser(this);
             jc.parse();
@@ -35,7 +45,9 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
         }
         if(savedInstanceState != null){
             contactos = savedInstanceState.getParcelableArrayList(CONTACTS_KEY);
+
         }
+
     }
 
     @Override
