@@ -2,6 +2,7 @@ package com.jonander2233.ejerciciofragmentscontactos;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
     private static final String SELECTED_CONTACT_KEY = "com.jonander2233.ejerciciofragmentscontactos.selectedcontact";
     private DetailFragment detailFragment;
     private boolean hasDetail;
-    private List<Contacto> contactos;
+    private ArrayList<Contacto> contactos;
     private Contacto contactoSeleccionado;
     private FragmentManager fragmentManager;
 
@@ -28,13 +29,11 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        if(savedInstanceState != null){
+
+        if(savedInstanceState == null){
             ContactParser jc = new ContactParser(this);
             jc.parse();
-            contactos = jc.getContactos();
-        }
-        if(savedInstanceState != null){
-            contactos = savedInstanceState.getParcelableArrayList(CONTACTS_KEY);
+            contactos = (ArrayList<Contacto>)jc.getContactos();
         }
     }
 
@@ -45,11 +44,23 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
 
     @Override
     public List<Contacto> getContactos() {
-        return Collections.emptyList();
+        return contactos;
     }
 
     @Override
     public void onClick(int position) {
+        contactoSeleccionado = contactos.get(position);
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList(CONTACTS_KEY,contactos);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
