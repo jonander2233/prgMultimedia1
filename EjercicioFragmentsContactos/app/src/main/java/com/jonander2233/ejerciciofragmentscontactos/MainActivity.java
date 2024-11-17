@@ -11,6 +11,7 @@ import com.jonander2233.ejerciciofragmentscontactos.models.Contacto;
 import com.jonander2233.ejerciciofragmentscontactos.transformers.ContactParser;
 import com.jonander2233.ejerciciofragmentscontactos.utils.IOnClickListener;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
             contactos = jc.getContactos();
         }
         if(savedInstanceState != null){
-            contactos = (List<Contacto>) savedInstanceState.getParcelableArray(CONTACTS_KEY);
+            contactos = savedInstanceState.getParcelableArrayList(CONTACTS_KEY);
         }
     }
 
