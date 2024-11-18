@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
             contactos = savedInstanceState.getParcelableArrayList(CONTACTS_KEY);
             contactoSeleccionado = savedInstanceState.getParcelable(SELECTED_CONTACT_KEY);
         }
-
     }
 
     @Override

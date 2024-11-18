@@ -17,7 +17,7 @@ import java.util.List;
 
 public class ContactoAdapter extends RecyclerView.Adapter<ContactoAdapter.ContactoViewHolder> {
     private final List<Contacto> contactos;
-    private final IOnClickListener listener;
+    private IOnClickListener listener;
     public ContactoAdapter(List<Contacto> contactos, IOnClickListener listener) {
         this.contactos = contactos;
         this.listener = listener;
@@ -32,6 +32,7 @@ public class ContactoAdapter extends RecyclerView.Adapter<ContactoAdapter.Contac
 
     @Override
     public void onBindViewHolder(@NonNull ContactoViewHolder holder, int position) {
+        Contacto contacto = contactos.get(position);
         holder.bindContacto(contactos.get(position));
     }
 
@@ -39,43 +40,26 @@ public class ContactoAdapter extends RecyclerView.Adapter<ContactoAdapter.Contac
     public int getItemCount() {
         return contactos.size();
     }
+    public void setListener(IOnClickListener listener){
+        this.listener = listener;
+    }
+
 
     public class ContactoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        private ImageView ivFotoContacto;
         private TextView tvNombre;
-        private TextView tvApellidos;
-        private TextView tvDireccion;
-        private TextView tvEmpresa;
-        private TextView tvFechaNacimiento;
         private TextView tvTelefono1;
-        private TextView tvTelefono2;
-        private TextView tvEmail;
         private String apellidosString;
 
         public ContactoViewHolder(@NonNull View itemView) {
             super(itemView);
-            ivFotoContacto = itemView.findViewById(R.id.ivFotoContacto);
             tvNombre = itemView.findViewById(R.id.tvNombre);
-            tvApellidos = itemView.findViewById(R.id.tvApellidos);
-            tvDireccion = itemView.findViewById(R.id.tvDireccion);
-            tvEmpresa = itemView.findViewById(R.id.tvEmpresa);
-            tvFechaNacimiento = itemView.findViewById(R.id.tvFechaNacimiento);
             tvTelefono1 = itemView.findViewById(R.id.tvTelefono1);
-            tvTelefono2 = itemView.findViewById(R.id.tvTelefono2);
-            tvEmail = itemView.findViewById(R.id.tvEmail);
             itemView.setOnClickListener(this);
         }
         public void bindContacto(Contacto contacto){
             tvNombre.setText(contacto.getName());
             apellidosString = contacto.getFirstSurname() + " " + contacto.getSecondSurname();
-            tvApellidos.setText(apellidosString);
-            //todo crash here
-            tvDireccion.setText(contacto.getAddress());
-            tvEmpresa.setText(contacto.getCompany());
-            tvFechaNacimiento.setText(contacto.getBirth());
             tvTelefono1.setText(contacto.getPhone1());
-            tvTelefono2.setText(contacto.getPhone2());
-            tvEmail.setText(contacto.getEmail());
         }
 
         @Override
