@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
     private static final String CONTACTS_KEY = "contacts key for saved instance";
     private static final String SELECTED_CONTACT_KEY = "contact key for saved instance";
     private boolean hasDetail;
-    private List<Contacto> contactos;
+    private ArrayList<Contacto> contactos;
     private Contacto contactoSeleccionado;
     private DetailFragment detailFragment;
     private FragmentManager fragmentManager;
@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
         setContentView(R.layout.activity_main);
         setTitle(R.string.contacts);
         fragmentManager = getSupportFragmentManager();
-
-        if(findViewById(R.id.fcvDetailFragment) != null){
+        hasDetail = findViewById(R.id.fcvDetailFragment) != null;
+        if(hasDetail){
             detailFragment = (DetailFragment) fragmentManager.findFragmentById(R.id.fcvDetailFragment);
             if (!(fragmentManager.findFragmentById(R.id.fcvListFragment) instanceof ListFragment)) {
                 fragmentManager.popBackStack();
@@ -41,34 +41,57 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
         }
 
         if(savedInstanceState != null){
-            ContactParser jc = new ContactParser(this);
-            jc.parse();
-            contactos = jc.getContactos();
+            contactos = savedInstanceState.getParcelableArrayList(CONTACTS_KEY);
+            contactoSeleccionado = savedInstanceState.getParcelable(SELECTED_CONTACT_KEY);
         }
-        contactos = savedInstanceState.getParcelableArrayList(CONTACTS_KEY);
-
-
 
     }
 
     @Override
-    public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    public void onBackPressed() {
+        super.onBackPressed();
+        setTitle(R.string.contacts);
+    }
+
+    public void loadData(){
+        ContactParser contactParser = new ContactParser(this);
+        if(contactParser.parse()){
+            this.contactos = (ArrayList<Contacto>) contactParser.getContactos();
+        }
+    }
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putParcelableArrayList(CONTACTS_KEY,contactos);
+        outState.putParcelable(SELECTED_CONTACT_KEY,contactoSeleccionado);
+        super.onSaveInstanceState(outState);
     }
 
 
     @Override
     public Contacto getContacto() {
-        return null;
+        if (contactoSeleccionado == null) {
+            contactoSeleccionado = contactos.get(0);
+        }
+
+        setTitle(contactoSeleccionado.getName() + " " + contactoSeleccionado.getFirstSurname());
+        return contactoSeleccionado;
     }
 
     @Override
     public List<Contacto> getContactos() {
-        return Collections.emptyList();
+        if(contactos == null){
+            loadData();
+        }
+        return contactos;
     }
 
     @Override
     public void onClick(int position) {
-
+        contactoSeleccionado = contactos.get(position);
+        if(hasDetail){
+            detailFragment.showDetail(contactoSeleccionado);
+        }else{
+            fragmentManager.beginTransaction().setReorderingAllowed(true).addToBackStack(null).replace(R.id.fcvListFragment,DetailFragment.class,null).commit();
+        }
     }
 }

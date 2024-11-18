@@ -69,6 +69,7 @@ public class ContactoAdapter extends RecyclerView.Adapter<ContactoAdapter.Contac
             tvNombre.setText(contacto.getName());
             apellidosString = contacto.getFirstSurname() + " " + contacto.getSecondSurname();
             tvApellidos.setText(apellidosString);
+            //todo crash here
             tvDireccion.setText(contacto.getAddress());
             tvEmpresa.setText(contacto.getCompany());
             tvFechaNacimiento.setText(contacto.getBirth());
