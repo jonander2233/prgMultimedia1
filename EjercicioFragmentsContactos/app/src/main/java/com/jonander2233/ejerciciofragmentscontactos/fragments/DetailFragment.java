@@ -31,7 +31,6 @@ public class DetailFragment extends Fragment {
 
     public DetailFragment(){
         super(R.layout.detail_contacto);
-
     }
 
     @Override
@@ -53,6 +52,8 @@ public class DetailFragment extends Fragment {
         tvTelefono1 = view.findViewById(R.id.tvTelefono1);
         tvTelefono2 = view.findViewById(R.id.tvTelefono2);
         tvEmail = view.findViewById(R.id.tvEmail);
+        if(contacto != null)
+            showDetail(contacto);
     }
     public void showDetail(Contacto contacto){
         this.contacto = contacto;
