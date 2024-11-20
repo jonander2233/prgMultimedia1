@@ -28,11 +28,16 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        if(savedInstanceState != null){
+            contactos = savedInstanceState.getParcelableArrayList(CONTACTS_KEY);
+            contactoSeleccionado = savedInstanceState.getParcelable(SELECTED_CONTACT_KEY);
+        }
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setTitle(R.string.contacts);
         fragmentManager = getSupportFragmentManager();
         hasDetail = findViewById(R.id.fcvDetailFragment) != null;
+
         if(hasDetail){
             detailFragment = (DetailFragment) fragmentManager.findFragmentById(R.id.fcvDetailFragment);
             if (!(fragmentManager.findFragmentById(R.id.fcvListFragment) instanceof ListFragment)) {
@@ -40,10 +45,6 @@ public class MainActivity extends AppCompatActivity implements ListFragment.IOnA
             }
         }
 
-        if(savedInstanceState != null){
-            contactos = savedInstanceState.getParcelableArrayList(CONTACTS_KEY);
-            contactoSeleccionado = savedInstanceState.getParcelable(SELECTED_CONTACT_KEY);
-        }
     }
 
     @Override
