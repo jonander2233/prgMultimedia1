@@ -83,7 +83,7 @@ public class ContactParser {
                 }
 
                 // Crear instancia de Account
-                this.account = new Account(accountId, accountName, accountFirstSurname, accountEmail, contactos);
+                this.account = new Account(accountId, accountName, accountFirstSurname, accountEmail, contactos,mails);
                 parsed = true;
             }
         } catch (Exception e) {
@@ -96,7 +96,4 @@ public class ContactParser {
         return this.account;
     }
 
-    public List<Mail> getMails() {
-        return mails;
-    }
 }

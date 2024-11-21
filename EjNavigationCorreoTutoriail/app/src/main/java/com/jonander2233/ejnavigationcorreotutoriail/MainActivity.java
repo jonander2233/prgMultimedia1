@@ -16,10 +16,20 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.jonander2233.ejnavigationcorreotutoriail.interfaces.IOnClickListener;
+import com.jonander2233.ejnavigationcorreotutoriail.models.Account;
+import com.jonander2233.ejnavigationcorreotutoriail.models.Mail;
+import com.jonander2233.ejnavigationcorreotutoriail.parsers.ContactParser;
 import com.jonander2233.ejnavigationcorreotutoriail.ui.fragments.ListFragment;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener,ListFragment.IOnAttachListener, IOnClickListener {
     private DrawerLayout drawerLayout;
+    private Account account;
+    private static final String ACCOUNT_KEY = "account key for saved instance";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +48,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 
+    public List<Mail> getMails(){
+        if(account == null){
+            loadData();
+        }
+        return account.getMails();
+    }
+
+    public void loadData(){
+        ContactParser parser = new ContactParser(this);
+        if(parser.parse()){
+            account =  parser.getAccount();
+        }
+    }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.nav_recived) {
@@ -50,4 +73,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
+    @Override
+    public void onClick(int position) {
+
+    }
 }
