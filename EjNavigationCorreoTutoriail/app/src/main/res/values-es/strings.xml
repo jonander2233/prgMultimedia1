@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EjNavigationCorreoTutoriail</string>
+    <string name="recived">Recibidos</string>
+    <string name="sent">Enviados</string>
+    <string name="unread">No leídos</string>
+    <string name="spam">Spam</string>
+    <string name="trash">Papelera</string>
+    <string name="more_options">Otras opciones</string>
+</resources>

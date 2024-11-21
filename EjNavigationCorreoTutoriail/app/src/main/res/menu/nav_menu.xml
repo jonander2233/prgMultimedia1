@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_recived"
+            android:icon="@drawable/nav_received"
+            android:title="@string/recived"/>
+
+        <item
+            android:id="@+id/nav_sent"
+            android:icon="@drawable/nav_sent"
+            android:title="@string/sent"/>
+
+        <item
+            android:id="@+id/nav_unread"
+            android:icon="@drawable/nav_unread"
+            android:title="@string/unread"/>
+    </group>
+    <item android:title="@string/more_options">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_spam"
+                    android:icon="@drawable/nav_spam"
+                    android:title="@string/spam"/>
+                <item
+                    android:id="@+id/nav_trash"
+                    android:icon="@drawable/nav_trash"
+                    android:title="@string/trash"/>
+            </group>
+        </menu>
+    </item>
 
 </menu>
