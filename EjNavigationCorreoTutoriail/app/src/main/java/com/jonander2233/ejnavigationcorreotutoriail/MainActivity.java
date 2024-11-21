@@ -40,10 +40,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.nav_sent:
-                break;
+        if (item.getItemId() == R.id.nav_recived) {
 
+        } else if (item.getItemId() == R.id.nav_sent) {
+        } else if (item.getItemId() == R.id.nav_unread) {
+        } else if (item.getItemId() == R.id.nav_spam) {
+        } else if (item.getItemId() == R.id.nav_trash) {
         }
         return false;
     }
