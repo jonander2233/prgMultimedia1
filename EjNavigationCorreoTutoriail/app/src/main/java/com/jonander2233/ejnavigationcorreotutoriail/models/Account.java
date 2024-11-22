@@ -85,6 +85,15 @@ public class Account implements Parcelable {
         }
         return unreadMails;
     }
+    public List<Mail> getDeletedMails(){
+        List<Mail> deletedMails = new ArrayList<>();
+        for (int i = 0; i < mails.size(); i++) {
+            if(!mails.get(i).isDeleted()){
+                deletedMails.add(mails.get(i));
+            }
+        }
+        return deletedMails;
+    }
     public List<Mail> getSpamMails(){
         List<Mail> spamMails = new ArrayList<>();
         for (int i = 0; i < mails.size(); i++) {

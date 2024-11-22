@@ -31,7 +31,11 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MailHolder> {
         View itemview = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem_mail,null);
         return new MailHolder(itemview);
     }
-
+    public void updateData(List<Mail> newMails) {
+        mails.clear();
+        mails.addAll(newMails);
+        notifyDataSetChanged();
+    }
     @Override
     public void onBindViewHolder(@NonNull MailAdapter.MailHolder holder, int position) {
         Mail mail = mails.get(position);
@@ -76,8 +80,15 @@ public class MailAdapter extends RecyclerView.Adapter<MailAdapter.MailHolder> {
                 }
             }
             tvSubject.setText(mail.getSubject());
-            tvContent.setText(mail.getBody());
             tvSentOn.setText(mail.getSentOn());
+            String texto = "";
+            if(mail.getBody().length() > 20){
+                texto = mail.getBody().substring(0,20);
+                tvContent.setText(texto + "...");
+            }else {
+                tvContent.setText(mail.getBody());
+            }
+
         }
         @Override
         public void onClick(View view) {

@@ -28,7 +28,17 @@ public class ListFragment extends Fragment {
     public interface IOnAttachListener{
         List<Mail> getMails();
     }
-
+    public void updateMailList(List<Mail> mails){
+        this.mails.clear();
+        this.mails.addAll(mails);
+        if(getView() != null){
+            RecyclerView recyclerView = getView().findViewById(R.id.rvMails);
+            MailAdapter adapter = (MailAdapter) recyclerView.getAdapter();
+            if(adapter != null){
+                adapter.updateData(mails);
+            }
+        }
+    }
     public ListFragment() {
         super(R.layout.fragment_list);
     }

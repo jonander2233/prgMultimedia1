@@ -63,16 +63,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        List<Mail> mails = new ArrayList<>();
         if (item.getItemId() == R.id.nav_recived) {
-
+            mails = account.getRecivedMails();
         } else if (item.getItemId() == R.id.nav_sent) {
+            mails = account.getSentMails();
         } else if (item.getItemId() == R.id.nav_unread) {
+            mails = account.getUnreadMails();
         } else if (item.getItemId() == R.id.nav_spam) {
+            mails = account.getSpamMails();
         } else if (item.getItemId() == R.id.nav_trash) {
+            mails = account.getDeletedMails();
         }
-        return false;
+        updateFragmentWithMails(mails);
+        drawerLayout.closeDrawers();
+        return true;
     }
-
+    public void updateFragmentWithMails(List<Mail> mails){
+        ListFragment fragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+        if(fragment!= null)
+            fragment.updateMailList(mails);
+    }
     @Override
     public void onClick(int position) {
 
