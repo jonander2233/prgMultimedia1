@@ -54,6 +54,7 @@ public class ListFragment extends Fragment {
         clickListener = (IOnClickListener) context;
         IOnAttachListener attachListener = (IOnAttachListener) context;
         mails = attachListener.getMails();
+
     }
 
     @Override

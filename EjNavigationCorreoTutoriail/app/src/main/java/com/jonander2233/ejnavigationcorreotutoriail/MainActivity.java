@@ -2,6 +2,8 @@ package com.jonander2233.ejnavigationcorreotutoriail;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -33,11 +35,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(account == null){
+            loadData();
+        }
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
+        View viewHeader = navigationView.getHeaderView(0);
+        TextView tvUsername = viewHeader.findViewById(R.id.nav_header_name);
+        tvUsername.setText(account.getName());
+        TextView tvEmail = viewHeader.findViewById(R.id.nav_header_email);
+        tvEmail.setText(account.getEmail());
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open_nav,R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
@@ -46,13 +56,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ListFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_sent);
         }
+
     }
 
     public List<Mail> getMails(){
-        if(account == null){
-            loadData();
-        }
-        return account.getMails();
+        return account.getSentMails();
     }
 
     public void loadData(){
