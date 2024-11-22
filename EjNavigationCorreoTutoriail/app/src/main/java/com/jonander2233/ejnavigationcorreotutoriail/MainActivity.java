@@ -3,6 +3,7 @@ package com.jonander2233.ejnavigationcorreotutoriail;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +49,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvUsername.setText(account.getName());
         TextView tvEmail = viewHeader.findViewById(R.id.nav_header_email);
         tvEmail.setText(account.getEmail());
+        ImageView ivPerfil = viewHeader.findViewById(R.id.ivProfilePic);
+        ivPerfil.setImageResource(R.drawable.pepe);
         navigationView.setNavigationItemSelectedListener(this);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open_nav,R.string.close_nav);
         drawerLayout.addDrawerListener(toggle);
