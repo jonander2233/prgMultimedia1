@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">EjercicioIntents</string>
+    <string name="open_web">Abrir web</string>
+    <string name="Country_list">Lista de países</string>
+    <string name="phone_call">Llamada telefónica</string>
+    <string name="maps">Google maps</string>
+    <string name="take_photo">Hacer foto</string>
+    <string name="send_mail">Enviar correo</string>
+</resources>

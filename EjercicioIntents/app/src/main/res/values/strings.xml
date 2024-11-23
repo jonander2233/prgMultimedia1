@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">EjercicioIntents</string>
+    <string name="open_web">Open web</string>
+    <string name="Country_list">Open country list</string>
+    <string name="phone_call">Phone call</string>
+    <string name="maps">Google maps</string>
+    <string name="take_photo">Take photo</string>
+    <string name="send_mail">Send mail</string>
 </resources>
