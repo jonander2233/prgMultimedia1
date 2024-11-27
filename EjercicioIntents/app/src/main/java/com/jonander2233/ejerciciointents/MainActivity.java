@@ -24,8 +24,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int TAG = 1;
     private static final int REQUEST_IMAGE_CAPTURE = 1;
+    private static final int REQUEST_CAMERA_PERMISSION = 100;
+    private static final int TAG = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,29 +50,17 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (view.getId() == R.id.bOpenWeb) {
-                    String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    startActivity(intent);
+                    openWeb();
                 } else if (view.getId() == R.id.bCountryList) {
 
                 }else if (view.getId() == R.id.bCall) {
                     doCall();
                 }else if (view.getId() == R.id.bMaps) {
-                    String latitude = "38.78875";
-                    String longitude = "0.178611";
-                    String uri = "geo:" + latitude + "," + longitude;
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
-                    intent.setPackage("com.google.android.apps.maps");
-                    if (intent.resolveActivity(getPackageManager()) != null) {
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(view.getContext(), "Google Maps no está instalado en este dispositivo.", Toast.LENGTH_SHORT).show();
-                    }
+                    openMaps(view);
                 }else if (view.getId() == R.id.bPhoto) {
                     requestCameraPermission();
-                    openCamera();
                 }else if (view.getId() == R.id.bSendMail) {
-
+                    sendEmail();
                 }
             }
         };
@@ -79,31 +69,60 @@ public class MainActivity extends AppCompatActivity {
         bCall.setOnClickListener(listener);
         bMaps.setOnClickListener(listener);
         bPhoto.setOnClickListener(listener);
+        bSendMail.setOnClickListener(listener);
+    }
+
+    private void sendEmail() {
+        String[] recipients = {"destinatario@example.com"}; // Destinatarios del correo
+        String subject = "Asunto del correo";
+        String body = "Cuerpo del correo.";
+
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // Asegúrate de usar "mailto:" para las apps de correo
+        intent.putExtra(Intent.EXTRA_EMAIL, recipients);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, body);
+
+        // Verifica si hay aplicaciones que puedan manejar el Intent
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(Intent.createChooser(intent, "Elige una aplicación para enviar el correo"));
+        } else {
+            // Maneja el caso en que no haya aplicaciones de correo disponibles
+            Toast.makeText(this, "No hay aplicaciones de correo instaladas.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void openMaps(View view) {
+        String latitude = "38.78875";
+        String longitude = "0.178611";
+        String uri = "geo:" + latitude + "," + longitude;
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+        intent.setPackage("com.google.android.apps.maps");
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        } else {
+            Toast.makeText(view.getContext(), "Google Maps no está instalado en este dispositivo.", Toast.LENGTH_SHORT).show();
+        }
+    }
+    private void openWeb() {
+        String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(intent);
+    }
+    private void requestCameraPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
+        } else {
+            openCamera();
+        }
     }
 
     private void openCamera() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-
-        // Verificar si hay una aplicación de cámara disponible
         if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
         } else {
-            Toast.makeText(this, "No hay aplicación de cámara disponible.", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    private static final int REQUEST_CAMERA_PERMISSION = 100;
-
-    private void requestCameraPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-                != PackageManager.PERMISSION_GRANTED) {
-            // No tienes el permiso, solicítalo al usuario
-            ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.CAMERA},
-                    REQUEST_CAMERA_PERMISSION);
-        } else {
-            // Ya tienes el permiso, abre la cámara
-            openCamera();
+            Toast.makeText(this, "No se puede abrir la cámara.", Toast.LENGTH_SHORT).show();
         }
     }
 
