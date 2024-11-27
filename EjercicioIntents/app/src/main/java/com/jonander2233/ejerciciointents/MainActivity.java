@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -40,13 +41,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (view.getId() == R.id.bOpenWeb) {
-
+                    String url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                    startActivity(intent);
                 } else if (view.getId() == R.id.bCountryList) {
 
                 }else if (view.getId() == R.id.bCall) {
                     doCall();
                 }else if (view.getId() == R.id.bMaps) {
-
+                    String latitude = "38.78875";
+                    String longitude = "0.178611";
+                    String uri = "geo:" + latitude + "," + longitude;
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+                    intent.setPackage("com.google.android.apps.maps");
+                    if (intent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(view.getContext(), "Google Maps no está instalado en este dispositivo.", Toast.LENGTH_SHORT).show();
+                    }
                 }else if (view.getId() == R.id.bPhoto) {
 
                 }else if (view.getId() == R.id.bSendMail) {
