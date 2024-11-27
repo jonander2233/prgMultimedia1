@@ -3,22 +3,29 @@ package com.jonander2233.ejerciciointents;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
+import java.io.File;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
     private static final int TAG = 1;
+    private static final int REQUEST_IMAGE_CAPTURE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(view.getContext(), "Google Maps no está instalado en este dispositivo.", Toast.LENGTH_SHORT).show();
                     }
                 }else if (view.getId() == R.id.bPhoto) {
-
+                    requestCameraPermission();
+                    openCamera();
                 }else if (view.getId() == R.id.bSendMail) {
 
                 }
@@ -72,6 +80,52 @@ public class MainActivity extends AppCompatActivity {
         bMaps.setOnClickListener(listener);
         bPhoto.setOnClickListener(listener);
     }
+
+    private void openCamera() {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+
+        // Verificar si hay una aplicación de cámara disponible
+        if (intent.resolveActivity(getPackageManager()) != null) {
+        } else {
+            Toast.makeText(this, "No hay aplicación de cámara disponible.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private static final int REQUEST_CAMERA_PERMISSION = 100;
+
+    private void requestCameraPermission() {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                != PackageManager.PERMISSION_GRANTED) {
+            // No tienes el permiso, solicítalo al usuario
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.CAMERA},
+                    REQUEST_CAMERA_PERMISSION);
+        } else {
+            // Ya tienes el permiso, abre la cámara
+            openCamera();
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            // Obtener el Bitmap de la imagen tomada
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+
+            ImageView imageView = findViewById(R.id.ivPhoto);
+            imageView.setImageBitmap(imageBitmap);
+
+            Toast.makeText(this, "Foto tomada con éxito", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "La foto no se tomó.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
     private void doCall(){
         String telephoneNumber = "666666666";
         if(ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED){
