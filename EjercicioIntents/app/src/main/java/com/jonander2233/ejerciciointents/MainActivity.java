@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
     }
+
     private void requestCameraPermission() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_CAMERA_PERMISSION);
@@ -118,11 +119,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void openCamera() {
+
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
-        } else {
-            Toast.makeText(this, "No se puede abrir la cámara.", Toast.LENGTH_SHORT).show();
+        if(getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY)){
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+            } else {
+                Toast.makeText(this, "No se puede abrir la cámara.", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 
