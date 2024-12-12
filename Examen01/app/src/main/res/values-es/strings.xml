@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Examen01</string>
+    <string name="clasification">Clasificación</string>
+    <string name="allowed_cards">Cartas permitidas</string>
+</resources>

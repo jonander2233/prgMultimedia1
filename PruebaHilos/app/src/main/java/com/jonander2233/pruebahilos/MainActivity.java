@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -82,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         protected void onReceiveResult(int resultCode, Bundle resultData) {
             switch (resultCode){
                 case 0:
-                    Log.i("ResultCode",String.valueOf(resultData.getInt("progreso")));d
+                    Log.i("ResultCode",String.valueOf(resultData.getInt("progreso")));
                     bar.setProgress(resultData.getInt("progreso"));
                     break;
                 case 1:
